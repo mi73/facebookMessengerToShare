@@ -11,7 +11,7 @@
 
 <script>
 
-    var app_id = '1151860801582306';
+  var app_id = '1151860801582306';
 
   window.fbAsyncInit = function() {
     FB.init({
@@ -31,14 +31,14 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-    document.querySelector('#share').addEventListener(function(e) {
+    document.querySelector('#share').addEventListener('click', function(e) {
       e.preventDefault();
       FB.ui({
         method: 'send',
         link: location.href,
       });
     });
-    document.querySelector('#link').addEventListener(function(e) {
+    document.querySelector('#link').addEventListener('click', function(e) {
       e.preventDefault();
       window.open('fb-messenger://share?link=' + encodeURIComponent(location.href) + '&app_id=' + encodeURIComponent(app_id));
     });
