@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FACEBOOK MESSENGER TO SHARE</title>
+</head>
+<body>
+
+<button id="link">SHARE</button>
+<button id="share">SHARE</button>
+
+<script>
+
+    var app_id = 'your-app-id';
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : app_id,
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+    document.querySelector('#share').addEventListener(function(e) {
+      e.preventDefault();
+      FB.ui({
+        method: 'send',
+        link: location.href,
+      });
+    });
+    document.querySelector('#link').addEventListener(function(e) {
+      e.preventDefault();
+      window.open('fb-messenger://share?link=' + encodeURIComponent(location.href) + '&app_id=' + encodeURIComponent(app_id));
+    });
+</script>
+</body>
+</html>
